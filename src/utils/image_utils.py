@@ -105,14 +105,19 @@ def take_screenshot_html(html_str, dimensions, timeout_ms=None):
 
     return image
 
+MACOS_CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
 def _find_chromium_binary():
-    """Find the first available Chromium-based binary in system PATH."""
+    """Find the first available Chromium-based binary in system PATH, falling back to Google Chrome's default macOS location."""
     candidates = ["chromium-headless-shell", "chromium", "chrome"]
     for candidate in candidates:
         path = shutil.which(candidate)
         if path:
             logger.debug(f"Found browser binary: {candidate} at {path}")
             return candidate
+    if os.path.isfile(MACOS_CHROME_PATH):
+        logger.debug(f"Found browser binary at {MACOS_CHROME_PATH}")
+        return MACOS_CHROME_PATH
     return None
 
 

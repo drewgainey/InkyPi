@@ -1,0 +1,51 @@
+<div class="form-group">
+    <div class="form-group">
+        <label for="station" class="form-label">Station</label>
+        <select id="station" name="station" class="form-input" required>
+            <option value="">Select a station...</option>
+            {% for station in stations %}
+            <option value="{{ station.id }}">{{ station.name }} ({{ station.routes }}) - {{ station.borough }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="direction" class="form-label">Direction</label>
+        <select id="direction" name="direction" class="form-input">
+            <option value="both">Both directions</option>
+            <option value="N">Northbound / Uptown only</option>
+            <option value="S">Southbound / Downtown only</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="routes" class="form-label">Lines (optional)</label>
+        <input type="text" id="routes" name="routes" placeholder="e.g. A C E (leave blank for all lines)" class="form-input">
+    </div>
+    <div class="form-group">
+        <label for="title" class="form-label">Title (optional)</label>
+        <input type="text" id="title" name="title" placeholder="Defaults to the station name" class="form-input">
+    </div>
+    <div class="form-group">
+        <label for="maxArrivals" class="form-label">Trains per direction</label>
+        <input type="number" id="maxArrivals" name="maxArrivals" min="1" max="10" value="5" class="form-input">
+    </div>
+    <div class="form-group">
+        <label for="minMinutes" class="form-label">Walk time to station (minutes)</label>
+        <input type="number" id="minMinutes" name="minMinutes" min="0" max="60" value="0" class="form-input">
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (loadPluginSettings) {
+            document.getElementById('station').value = pluginSettings.station || '';
+            document.getElementById('direction').value = pluginSettings.direction || 'both';
+            document.getElementById('routes').value = pluginSettings.routes || '';
+            document.getElementById('title').value = pluginSettings.title || '';
+            document.getElementById('maxArrivals').value = pluginSettings.maxArrivals || 5;
+            document.getElementById('minMinutes').value = pluginSettings.minMinutes || 0;
+        }
+        if (window.jQuery && jQuery.fn.select2) {
+            jQuery('#station').select2({ width: '100%', placeholder: 'Search for a station...' });
+        }
+    });
+</script>

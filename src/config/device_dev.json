@@ -41,9 +41,9 @@
         "active_playlist": null
     },
     "refresh_info": {
-        "refresh_time": null,
-        "image_hash": null,
-        "refresh_type": null,
-        "plugin_id": null
+        "refresh_time": "2026-10-20T00:24:20.403380+00:00",
+        "image_hash": "4c79b96de842578738f6262930c1bc94be3a3c256427f595c19af40517a097cc",
+        "refresh_type": "Manual Update",
+        "plugin_id": "nyc_subway"
     }
 }

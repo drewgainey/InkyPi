@@ -1,0 +1,130 @@
+.subway-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-family: "Jost";
+  box-sizing: border-box;
+  padding: 1.5vh 1.5vw;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2vw;
+  padding-bottom: 1.5vh;
+  border-bottom: max(2px, 0.5vh) solid currentColor;
+}
+.station {
+  min-width: 0;
+}
+.station-name {
+  font-size: min(8vh, 6vw);
+  font-weight: 600;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.station-routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vw;
+  margin-top: 1vh;
+}
+.updated {
+  font-size: min(3.5vh, 2.6vw);
+  white-space: nowrap;
+  opacity: 0.8;
+}
+.columns {
+  display: flex;
+  flex: 1;
+  gap: 3vw;
+  margin-top: 1.5vh;
+  min-height: 0;
+}
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.direction {
+  font-size: min(4.5vh, 3.4vw);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1vh;
+}
+.arrival {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  padding: 1vh 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+.bullet {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(9vh, 7vw);
+  height: min(9vh, 7vw);
+  border-radius: 50%;
+  font-size: min(6vh, 4.6vw);
+  font-weight: 600;
+  line-height: 1;
+}
+.bullet.express {
+  border-radius: 0;
+  transform: rotate(45deg) scale(0.85);
+}
+.bullet.express > span {
+  transform: rotate(-45deg);
+}
+.bullet.small {
+  width: min(5vh, 3.8vw);
+  height: min(5vh, 3.8vw);
+  font-size: min(3.2vh, 2.4vw);
+}
+.destination {
+  flex: 1;
+  min-width: 0;
+  font-size: min(4.8vh, 3.4vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.minutes {
+  flex: none;
+  font-size: min(7vh, 5vw);
+  font-weight: 600;
+  text-align: right;
+}
+.unit {
+  font-size: 0.5em;
+  font-weight: normal;
+  margin-left: 0.3em;
+}
+.no-trains {
+  font-size: min(4.5vh, 3.4vw);
+  opacity: 0.7;
+  padding: 1vh 0;
+}
+
+@media (orientation: portrait) {
+  .header { flex-direction: column; gap: 0.5vh; }
+  .station { max-width: 100%; }
+  .columns { flex-direction: column; gap: 2vh; }
+  .station-name { font-size: 7vw; }
+  .updated { font-size: 3.4vw; }
+  .column { flex: 1; overflow: hidden; }
+  .direction { font-size: 4.6vw; margin-bottom: 0.5vh; }
+  .arrival { padding: 0.6vh 0; }
+  .bullet { width: 7.5vw; height: 7.5vw; font-size: 5vw; }
+  .bullet.small { width: 5.5vw; height: 5.5vw; font-size: 3.6vw; }
+  .destination { font-size: 4.6vw; }
+  .minutes { font-size: 6vw; }
+  .no-trains { font-size: 4.6vw; }
+}

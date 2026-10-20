@@ -1,0 +1,36 @@
+{% extends "plugin.html" %}
+
+{% block content %}
+
+<div class="subway-container">
+    <div class="header">
+        <div class="station">
+            <div class="station-name">{{ station_name }}</div>
+            <div class="station-routes">
+                {% for route in routes %}
+                <span class="bullet small" style="background-color: {{ route.color }}; color: {{ route.text_color }};">{{ route.route }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="updated">Updated {{ updated }}</div>
+    </div>
+
+    <div class="columns">
+        {% for column in columns %}
+        <div class="column">
+            <div class="direction">{{ column.label }}</div>
+            {% for arrival in column.arrivals %}
+            <div class="arrival">
+                <span class="bullet {% if arrival.express %}express{% endif %}" style="background-color: {{ arrival.color }}; color: {{ arrival.text_color }};"><span>{{ arrival.route }}</span></span>
+                <span class="destination">{{ arrival.destination }}</span>
+                <span class="minutes">{% if arrival.minutes == 0 %}Now{% else %}{{ arrival.minutes }}<span class="unit">min</span>{% endif %}</span>
+            </div>
+            {% else %}
+            <div class="no-trains">No trains scheduled</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
